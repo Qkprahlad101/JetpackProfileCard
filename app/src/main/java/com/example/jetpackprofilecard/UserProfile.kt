@@ -4,5 +4,51 @@ data class UserProfile constructor(val name: String, val onlineStatus: Boolean, 
 
 val userProfileList = arrayListOf<UserProfile>(
     UserProfile("John Doe", true, R.drawable.profilepic),
-    UserProfile("Ramesh", false, R.drawable.pp)
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+    UserProfile("John Doe", true, R.drawable.profilepic),
+    UserProfile("Ramesh", false, R.drawable.pp),
+
+
+
+
+
+
+
+
+
 )
