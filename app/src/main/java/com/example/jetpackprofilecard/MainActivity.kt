@@ -18,6 +18,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -30,6 +31,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -44,7 +46,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.jetpackprofilecard.ui.theme.MyTheme
 import com.example.jetpackprofilecard.ui.theme.lightGreen
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,8 +72,8 @@ fun UserApplication(userProfile: List<UserProfile> = userProfileList) {
             arguments = listOf(navArgument("userId") {
                 type = NavType.IntType
             })
-        ) {navStackBackEntry ->
-            UserProfileDetailsScreen(navStackBackEntry.arguments!!.getInt("userId"))
+        ) { navStackBackEntry ->
+            UserProfileDetailsScreen(navStackBackEntry.arguments!!.getInt("userId"), navController)
         }
     }
 }
@@ -85,7 +87,7 @@ fun UserListScreen(
         modifier = Modifier
             .fillMaxSize()
     ) {
-        AppBar()
+        AppBar("Users List Screen", Icons.Filled.Home) {}
         Surface(
             modifier = Modifier
                 .fillMaxSize()
@@ -106,16 +108,18 @@ fun UserListScreen(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppBar() {
+fun AppBar(title: String, icon: ImageVector, iconClickAction: () -> Unit) {
     TopAppBar(
         navigationIcon = {
             Icon(
-                Icons.Filled.Home,
+                icon,
                 contentDescription = " ",
-                modifier = Modifier.padding(horizontal = 12.dp)
+                modifier = Modifier
+                    .padding(horizontal = 12.dp)
+                    .clickable { iconClickAction.invoke() }
             )
         },
-        title = { Text("Messaging App Users") }
+        title = { Text(title) }
     )
 }
 
@@ -180,15 +184,17 @@ fun ProfileContent(userName: String, onlineStatus: Boolean, horizontalAlign: Ali
 }
 
 @Composable
-fun UserProfileDetailsScreen(userId: Int) {
-    val userProfile = userProfileList.first{userProfile ->
+fun UserProfileDetailsScreen(userId: Int, navController: NavHostController?) {
+    val userProfile = userProfileList.first { userProfile ->
         userId == userProfile._id
     }
     Column(
         modifier = Modifier
             .fillMaxSize()
     ) {
-        AppBar()
+        AppBar(title = "User Details", icon = Icons.Filled.ArrowBack) {
+            navController?.navigateUp()  // Jetpack compose will pop the top composable and return the next composable
+        }
         Surface(
             modifier = Modifier
                 .fillMaxSize()
@@ -211,7 +217,7 @@ fun UserProfileDetailsScreen(userId: Int) {
 @Composable
 fun UserProfileDetailsPreview() {
     MyTheme {
-        UserProfileDetailsScreen(userId = 0)
+        UserProfileDetailsScreen(userId = 0, null)
     }
 }
 
